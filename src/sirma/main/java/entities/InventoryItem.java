@@ -7,10 +7,10 @@ import java.math.BigDecimal;
 public class InventoryItem extends AbstractItem {
 
     private String id;
-    private int quantity;
 
-    public InventoryItem(Category category, BigDecimal price, boolean breakable, boolean perishable) {
-        super(category, price, breakable, perishable);
+    public InventoryItem(Category category, BigDecimal price, boolean breakable, boolean perishable
+    , int quantity) {
+        super(category, price, breakable, perishable, quantity);
     }
 
     public String getId() {
@@ -39,32 +39,34 @@ public class InventoryItem extends AbstractItem {
         return null;
     }
 
+
     @Override
-    public Category getItemCategory() {
-        return null;
+    public String getItemCategory() {
+        return this.getCategory().getDisplayName();
     }
 
     @Override
-    public Category setItemCategory(Category category) {
-        return null;
+    public void setItemCategory(Category category) {
+        this.category = category;
     }
 
     @Override
     public BigDecimal calculateItemValue() {
-        return this.getItemPrice().multiply(BigDecimal.valueOf(this.quantity));
+        BigDecimal multiply = this.getPrice().multiply(BigDecimal.valueOf(this.quantity));
+        return multiply;
     }
 
     @Override
-    public String getItemDescription() {
-        StringBuilder sb= new StringBuilder();
+    public void displayItemDescription() {
+        StringBuilder sb = new StringBuilder();
         sb.append(String.format("This item is of category %s%n",
-            this.getItemCategory().getDisplayName()))
+            this.getItemCategory()))
             .append(String.format("This item price is %s%n",
                 this.getItemPrice()))
             .append(String.format("This item available quantity is: %d",
                 this.getQuantity()));
 
-        return sb.toString();
+        System.out.println(sb);
     }
 
     @Override
@@ -78,12 +80,13 @@ public class InventoryItem extends AbstractItem {
     }
 
     @Override
-    public BigDecimal setItemPrice() {
-        return null;
+    public void setItemPrice(BigDecimal price) {
+        this.price = price;
     }
 
     @Override
     public BigDecimal getItemPrice() {
-        return null;
+        return super.getPrice();
     }
+
 }

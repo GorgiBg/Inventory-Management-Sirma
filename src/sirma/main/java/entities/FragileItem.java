@@ -4,13 +4,13 @@ import entities.enums.Category;
 
 import java.math.BigDecimal;
 
-public class FragileItem extends InventoryItem{
+public class FragileItem extends InventoryItem {
 
     double weightInKilograms;
 
-    public FragileItem(Category category, BigDecimal price, boolean breakable, boolean perishable,
-                       double weightInKilograms) {
-        super(category, price, breakable, perishable);
+    public FragileItem(Category category, BigDecimal price, double weightInKilograms,
+                       int quantity) {
+        super(category, price, true, false, quantity);
         this.weightInKilograms = weightInKilograms;
     }
 }

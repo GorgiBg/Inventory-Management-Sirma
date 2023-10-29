@@ -4,7 +4,6 @@ import entities.enums.Category;
 
 public interface Categorizable {
 
-    Category getItemCategory();
-    Category setItemCategory(Category category);
-
+    String getItemCategory();
+    void setItemCategory(Category category);
 }

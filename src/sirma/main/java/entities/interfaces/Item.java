@@ -6,6 +6,6 @@ public interface Item {
 
     String getItemDetails();
     BigDecimal calculateItemValue();
-    String getItemDescription();
+    void displayItemDescription();
 
 }

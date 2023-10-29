@@ -7,20 +7,24 @@ import java.math.BigDecimal;
 
 public abstract class AbstractItem implements Item, Categorizable, Breakable, Perishable, Sellable {
 
-    private Category category;
+    protected Category category;
     protected BigDecimal price;
     private boolean breakable;
     private boolean perishable;
 
-    public AbstractItem(Category category, BigDecimal price, boolean breakable, boolean perishable) {
+    protected int quantity;
+
+    public AbstractItem(Category category, BigDecimal price, boolean breakable, boolean perishable,
+                        int quantity) {
         this.category = category;
         this.price = price;
         this.breakable = breakable;
         this.perishable = perishable;
+        this.quantity = quantity;
     }
 
     public Category getCategory() {
-        return category;
+        return this.category;
     }
 
     public void setCategory(Category category) {
@@ -36,7 +40,14 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
     }
 
     public String getItemDetails() {
-        return this.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("This item is of category %s%n",
+                this.getCategory()))
+            .append(String.format("This item price is %s%n",
+                this.getItemPrice()))
+            .append(String.format("This item available quantity is: %d",
+                this.getQuantity()));
+        return sb.toString();
     }
 
     @Override
@@ -55,6 +66,15 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
 
     public void setPerishable(boolean perishable) {
         this.perishable = perishable;
+    }
+
+    @Override
+    public BigDecimal calculateItemValue() {
+        return this.getItemPrice().multiply(BigDecimal.valueOf(this.quantity));
+    }
+
+    public int getQuantity() {
+        return this.quantity;
     }
 
     @Override
