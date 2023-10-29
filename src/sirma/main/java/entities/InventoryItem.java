@@ -41,7 +41,7 @@ public class InventoryItem extends AbstractItem {
     }
 
     @Override
-    public Category setItemCategory() {
+    public Category setItemCategory(Category category) {
         return null;
     }
 
@@ -52,7 +52,15 @@ public class InventoryItem extends AbstractItem {
 
     @Override
     public String getItemDescription() {
-        return null;
+        StringBuilder sb= new StringBuilder();
+        sb.append(String.format("This item is of category %s%n",
+            this.getItemCategory().getDisplayName()))
+            .append(String.format("This item price is %s%n",
+                this.getItemPrice()))
+            .append(String.format("This item available quantity is: %d",
+                this.getQuantity()));
+
+        return sb.toString();
     }
 
     @Override

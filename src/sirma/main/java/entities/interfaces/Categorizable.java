@@ -5,6 +5,6 @@ import entities.enums.Category;
 public interface Categorizable {
 
     Category getItemCategory();
-    Category setItemCategory();
+    Category setItemCategory(Category category);
 
 }
