@@ -31,8 +31,8 @@ public class InventoryItem extends AbstractItem {
     }
 
     @Override
-    public boolean isBroken() {
-        return false;
+    public BigDecimal calculateDamageCost() {
+        return null;
     }
 
     @Override
@@ -69,8 +69,8 @@ public class InventoryItem extends AbstractItem {
     }
 
     @Override
-    public boolean isPerished() {
-        return false;
+    public BigDecimal calculatePerishCosts() {
+        return null;
     }
 
     @Override

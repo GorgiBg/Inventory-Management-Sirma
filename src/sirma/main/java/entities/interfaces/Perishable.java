@@ -1,6 +1,8 @@
 package entities.interfaces;
 
+import java.math.BigDecimal;
+
 public interface Perishable {
     boolean isPerishable();
-    boolean isPerished();
+    BigDecimal calculatePerishCosts();
 }
