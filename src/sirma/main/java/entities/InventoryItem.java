@@ -1,5 +1,7 @@
 package entities;
 
+import entities.enums.Category;
+
 import java.math.BigDecimal;
 
 public class InventoryItem extends AbstractItem {

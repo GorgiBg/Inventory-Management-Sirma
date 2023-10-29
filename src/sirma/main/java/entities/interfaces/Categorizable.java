@@ -1,6 +1,6 @@
 package entities.interfaces;
 
-import entities.Category;
+import entities.enums.Category;
 
 public interface Categorizable {
 
