@@ -1,9 +1,11 @@
 package entities.interfaces;
 
+import java.math.BigDecimal;
+
 public interface Item {
 
     String getItemDetails();
-    double calculateItemValue();
+    BigDecimal calculateItemValue();
     String getItemDescription();
 
 }

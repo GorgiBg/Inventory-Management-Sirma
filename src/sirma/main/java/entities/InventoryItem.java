@@ -46,8 +46,8 @@ public class InventoryItem extends AbstractItem {
     }
 
     @Override
-    public double calculateItemValue() {
-        return 0;
+    public BigDecimal calculateItemValue() {
+        return this.getItemPrice().multiply(BigDecimal.valueOf(this.quantity));
     }
 
     @Override
