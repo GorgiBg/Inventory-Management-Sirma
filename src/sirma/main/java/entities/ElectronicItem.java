@@ -9,9 +9,9 @@ public class ElectronicItem extends InventoryItem {
 
     private Power power;
 
-    public ElectronicItem(Category category, BigDecimal price, boolean breakable
+    public ElectronicItem(long id, Category category, BigDecimal price, boolean breakable
         , Power power, int quantity) {
-        super(category, price, breakable, false, quantity);
+        super(id, category, price, breakable, false, quantity);
         this.power = power;
     }
 }

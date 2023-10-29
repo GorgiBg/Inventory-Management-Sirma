@@ -10,9 +10,9 @@ public class GroceryItem extends InventoryItem {
     private LocalDate expiryDate;
     private double weightInKilograms;
 
-    public GroceryItem(Category category, BigDecimal price, boolean breakable,
+    public GroceryItem(long id, Category category, BigDecimal price, boolean breakable,
                        LocalDate expiryDate, double weightInKilograms, int quantity) {
-        super(category, price, breakable, true, quantity);
+        super(id, category, price, breakable, true, quantity);
         this.expiryDate = expiryDate;
         this.weightInKilograms = weightInKilograms;
     }

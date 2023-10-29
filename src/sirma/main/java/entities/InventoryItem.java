@@ -6,18 +6,19 @@ import java.math.BigDecimal;
 
 public class InventoryItem extends AbstractItem {
 
-    private String id;
+    private long id;
 
-    public InventoryItem(Category category, BigDecimal price, boolean breakable, boolean perishable
+    public InventoryItem(long id, Category category, BigDecimal price, boolean breakable, boolean perishable
     , int quantity) {
         super(category, price, breakable, perishable, quantity);
+        this.id = id;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
