@@ -7,8 +7,17 @@ import java.math.BigDecimal;
 
 public abstract class AbstractItem implements Item, Categorizable, Breakable, Perishable, Sellable {
 
-    Category category;
+    private Category category;
     protected BigDecimal price;
+    private boolean breakable;
+    private boolean perishable;
+
+    public AbstractItem(Category category, BigDecimal price, boolean breakable, boolean perishable) {
+        this.category = category;
+        this.price = price;
+        this.breakable = breakable;
+        this.perishable = perishable;
+    }
 
     public Category getCategory() {
         return category;
@@ -19,7 +28,7 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
     }
 
     public BigDecimal getPrice() {
-        return price;
+        return this.price;
     }
 
     public void setPrice(BigDecimal price) {
@@ -28,6 +37,24 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
 
     public String getItemDetails() {
         return this.toString();
+    }
+
+    @Override
+    public boolean isBreakable() {
+        return breakable;
+    }
+
+    public void setBreakable(boolean breakable) {
+        this.breakable = breakable;
+    }
+
+    @Override
+    public boolean isPerishable() {
+        return perishable;
+    }
+
+    public void setPerishable(boolean perishable) {
+        this.perishable = perishable;
     }
 
     @Override

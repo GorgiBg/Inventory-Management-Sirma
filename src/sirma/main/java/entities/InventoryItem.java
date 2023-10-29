@@ -9,6 +9,10 @@ public class InventoryItem extends AbstractItem {
     private String id;
     private int quantity;
 
+    public InventoryItem(Category category, BigDecimal price, boolean breakable, boolean perishable) {
+        super(category, price, breakable, perishable);
+    }
+
     public String getId() {
         return id;
     }
