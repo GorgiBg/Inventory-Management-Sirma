@@ -1,6 +1,6 @@
-package entities;
+package sirma.main.java.entities;
 
-import entities.enums.Category;
+import sirma.main.java.entities.enums.Category;
 
 import java.math.BigDecimal;
 
@@ -53,8 +53,7 @@ public class InventoryItem extends AbstractItem {
 
     @Override
     public BigDecimal calculateItemValue() {
-        BigDecimal multiply = this.getPrice().multiply(BigDecimal.valueOf(this.quantity));
-        return multiply;
+        return this.getPrice().multiply(BigDecimal.valueOf(this.quantity));
     }
 
     @Override

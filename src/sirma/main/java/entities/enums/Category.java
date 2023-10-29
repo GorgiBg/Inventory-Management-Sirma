@@ -1,4 +1,4 @@
-package entities.enums;
+package sirma.main.java.entities.enums;
 
 public enum Category {
     FRAGILE("Fragile"),

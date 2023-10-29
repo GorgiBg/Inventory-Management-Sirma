@@ -1,6 +1,7 @@
-package entities.interfaces;
+package sirma.main.java.entities.interfaces;
 
-import entities.enums.Category;
+
+import sirma.main.java.entities.enums.Category;
 
 public interface Categorizable {
 

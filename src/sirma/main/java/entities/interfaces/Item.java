@@ -1,4 +1,4 @@
-package entities.interfaces;
+package sirma.main.java.entities.interfaces;
 
 import java.math.BigDecimal;
 

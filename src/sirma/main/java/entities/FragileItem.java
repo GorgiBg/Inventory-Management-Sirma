@@ -1,6 +1,6 @@
-package entities;
+package sirma.main.java.entities;
 
-import entities.enums.Category;
+import sirma.main.java.entities.enums.Category;
 
 import java.math.BigDecimal;
 
