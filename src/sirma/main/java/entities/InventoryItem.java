@@ -22,22 +22,13 @@ public class InventoryItem extends AbstractItem {
         this.id = id;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
     @Override
-    public boolean isBreakable() {
-        return false;
-    }
-
-    @Override
     public BigDecimal calculateDamageCost() {
-        return null;
+        return BigDecimal.valueOf(0);
     }
 
 
@@ -65,15 +56,7 @@ public class InventoryItem extends AbstractItem {
         System.out.println(sb);
     }
 
-    @Override
-    public boolean isPerishable() {
-        return false;
-    }
 
-    @Override
-    public BigDecimal calculatePerishCosts() {
-        return null;
-    }
 
     @Override
     public void setItemPrice(BigDecimal price) {
@@ -85,4 +68,8 @@ public class InventoryItem extends AbstractItem {
         return super.getPrice();
     }
 
+    @Override
+    public BigDecimal calculatePerishCosts() {
+        return BigDecimal.valueOf(0);
+    }
 }

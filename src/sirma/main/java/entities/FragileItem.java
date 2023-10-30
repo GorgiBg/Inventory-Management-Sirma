@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class FragileItem extends InventoryItem {
 
-    double weightInKilograms;
+    private double weightInKilograms;
 
     public FragileItem(long id, Category category, BigDecimal price, double weightInKilograms,
                        int quantity) {
