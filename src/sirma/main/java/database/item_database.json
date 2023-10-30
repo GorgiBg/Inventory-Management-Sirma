@@ -1,0 +1,85 @@
+[
+  {
+    "id": 1,
+    "category": "ELECTRONIC",
+    "price": 100.0,
+    "breakable": true,
+    "power": "BATTERIES",
+    "quantity": 2
+  },
+  {
+    "id": 2,
+    "category": "ELECTRONIC",
+    "price": 200.0,
+    "breakable": true,
+    "power": "AC_POWER",
+    "quantity": 4
+  },
+  {
+    "id": 3,
+    "category": "ELECTRONIC",
+    "price": 300.0,
+    "breakable": true,
+    "power": "USB",
+    "quantity": 6
+  },
+  {
+    "id": 4,
+    "category": "ELECTRONIC",
+    "price": 400.0,
+    "breakable": true,
+    "power": "BATTERIES",
+    "quantity": 8
+  },
+  {
+    "id": 5,
+    "category": "GROCERY",
+    "price": 35.0,
+    "breakable": false,
+    "expiryDate": "2023-10-27",
+    "weightInKilograms": 0.7,
+    "quantity": 21
+  },
+  {
+    "id": 6,
+    "category": "GROCERY",
+    "price": 40.0,
+    "breakable": false,
+    "expiryDate": "2023-10-28",
+    "weightInKilograms": 0.8,
+    "quantity": 24
+  },
+  {
+    "id": 7,
+    "category": "GROCERY",
+    "price": 45.0,
+    "breakable": false,
+    "expiryDate": "2023-10-29",
+    "weightInKilograms": 0.9,
+    "quantity": 27
+  },
+  {
+    "id": 8,
+    "category": "FRAGILE",
+    "price": 100.0,
+    "breakable": true,
+    "weightInKilograms": 0.1,
+    "quantity": 5
+  },
+  {
+    "id": 9,
+    "category": "FRAGILE",
+    "price": 150.0,
+    "breakable": true,
+    "weightInKilograms": 0.2,
+    "quantity": 7
+  },
+  {
+    "id": 10,
+    "category": "FRAGILE",
+    "price": 200.0,
+    "breakable": true,
+    "weightInKilograms": 0.3,
+    "quantity": 8
+  }
+]

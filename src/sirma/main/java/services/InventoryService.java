@@ -2,6 +2,8 @@ package sirma.main.java.services;
 
 import sirma.main.java.constants.StringConstants;
 import sirma.main.java.entities.InventoryItem;
+import sirma.main.java.entities.Order;
+import sirma.main.java.entities.Payment;
 import sirma.main.java.entities.enums.Category;
 import sirma.main.java.utility.MyObjectMapper;
 
@@ -27,7 +29,8 @@ public class InventoryService {
         int quantity = Integer.parseInt(sc.nextLine().trim());
         InventoryItem currentItem = allItems.get(id - 1);
         validityCheck(currentItem, id, quantity);
-        yourItems.put(id, quantity);
+        yourItems.putIfAbsent(id, 0);
+        yourItems.put(id, yourItems.get(id) + quantity);
     }
 
     private static void validityCheck(InventoryItem currentItem, int id, int quantity) {
@@ -107,6 +110,56 @@ public class InventoryService {
     }
 
     public void placeOrder() {
+        Map<InventoryItem, Integer> orderItems = extractItemsForOrder();
+        Order order = new Order(orderItems);
+        boolean itemsInStock = true;
+        for (Map.Entry<InventoryItem, Integer> entry : orderItems.entrySet()) {
+            InventoryItem orderedItem = entry.getKey();
+            int stockQuantity = allItems.get((int) (orderedItem.getId() - 1)).getQuantity();
+            long itemId = entry.getKey().getId();
+            int orderedQuantity = entry.getValue();
+            int availableQuantity = yourItems.get((int) itemId);
+
+            // Check if there are enough items in stock
+            if (stockQuantity < orderedQuantity) {
+                System.out.println("Not enough stock for item with ID " + itemId);
+                itemsInStock = false;
+                continue;
+            }
+
+            // Reduce item quantity in cart
+            yourItems.put((int) itemId, availableQuantity - orderedQuantity);
+            orderedItem.setQuantity(stockQuantity - orderedQuantity);
+        }
+        if (itemsInStock) {
+            BigDecimal orderTotal = order.calculateOrderTotal();
+
+            // Process the payment
+            Payment payment = new Payment(orderTotal, order.getPaymentMethod());
+            order.processPayment(payment);
+
+            System.out.printf("Order placed successfully! The sum is %s%n", orderTotal);
+        } else {
+            System.out.println("Order not placed due to insufficient quantity.");
+        }
+    }
+
+    private Map<InventoryItem, Integer> extractItemsForOrder() {
+        Map<InventoryItem, Integer> itemQuantityMap = new HashMap<>();
+
+        for (InventoryItem item : allItems) {
+            int itemId = (int) item.getId();
+            if (yourItems.containsKey(itemId)) {
+                int quantity = yourItems.get(itemId);
+                itemQuantityMap.put(item, quantity);
+            }
+        }
+
+        return itemQuantityMap;
+    }
+
+    private boolean isItemInStock(int itemId) {
+        return yourItems.containsKey(itemId);
 
     }
 
