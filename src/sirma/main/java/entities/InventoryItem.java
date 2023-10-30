@@ -51,10 +51,6 @@ public class InventoryItem extends AbstractItem {
         this.category = category;
     }
 
-    @Override
-    public BigDecimal calculateItemValue() {
-        return this.getPrice().multiply(BigDecimal.valueOf(this.quantity));
-    }
 
     @Override
     public void displayItemDescription() {

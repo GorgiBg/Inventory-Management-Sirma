@@ -10,10 +10,9 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
 
     protected Category category;
     protected BigDecimal price;
+    protected int quantity;
     private boolean breakable;
     private boolean perishable;
-
-    protected int quantity;
 
     public AbstractItem(Category category, BigDecimal price, boolean breakable, boolean perishable,
                         int quantity) {
