@@ -20,5 +20,9 @@ public class Payment {
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 }
 

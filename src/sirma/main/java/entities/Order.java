@@ -7,9 +7,11 @@ import java.util.Map;
 
 public class Order {
     private Map<InventoryItem, Integer> items;
+    private Payment payment;
 
-    public Order(Map<InventoryItem, Integer> items) {
+    public Order(Map<InventoryItem, Integer> items, Payment payment) {
         this.items = items;
+        this.payment = payment;
     }
 
     public Map<InventoryItem, Integer> getItems() {
@@ -30,10 +32,20 @@ public class Order {
     }
 
     public void processPayment(Payment payment) {
-
+        BigDecimal paymentAmount = payment.getAmount();
+        PaymentMethod paymentMethod = payment.getPaymentMethod();
+        System.out.printf("You just payed %.2f via %s%n", paymentAmount, paymentMethod);
     }
 
     public PaymentMethod getPaymentMethod() {
-        return null;
+        return this.payment.getPaymentMethod();
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }

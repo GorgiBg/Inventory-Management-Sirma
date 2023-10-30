@@ -31,7 +31,7 @@ public class ApplicationRunner {
                     service.calculateTotalPrice();
                     break;
                 case 6:
-                    service.placeOrder();
+                    service.placeOrder(sc);
                     break;
                 case 7:
                     System.out.println("Have a nice day.");

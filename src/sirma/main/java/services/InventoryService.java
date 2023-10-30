@@ -5,6 +5,7 @@ import sirma.main.java.entities.InventoryItem;
 import sirma.main.java.entities.Order;
 import sirma.main.java.entities.Payment;
 import sirma.main.java.entities.enums.Category;
+import sirma.main.java.entities.enums.PaymentMethod;
 import sirma.main.java.utility.MyObjectMapper;
 
 import java.io.IOException;
@@ -109,9 +110,12 @@ public class InventoryService {
         System.out.println("Total Price: " + totalPrice);
     }
 
-    public void placeOrder() {
+    public void placeOrder(Scanner sc) {
         Map<InventoryItem, Integer> orderItems = extractItemsForOrder();
-        Order order = new Order(orderItems);
+        System.out.println("Enter your payment method");
+        String paymentMethod = sc.nextLine().trim().toUpperCase();
+        Payment payment = new Payment(BigDecimal.ZERO, PaymentMethod.valueOf(paymentMethod));
+        Order order = new Order(orderItems, payment);
         boolean itemsInStock = true;
         for (Map.Entry<InventoryItem, Integer> entry : orderItems.entrySet()) {
             InventoryItem orderedItem = entry.getKey();
@@ -135,7 +139,8 @@ public class InventoryService {
             BigDecimal orderTotal = order.calculateOrderTotal();
 
             // Process the payment
-            Payment payment = new Payment(orderTotal, order.getPaymentMethod());
+            payment.setAmount(orderTotal);
+            order.setPayment(payment);
             order.processPayment(payment);
 
             System.out.printf("Order placed successfully! The sum is %s%n", orderTotal);
