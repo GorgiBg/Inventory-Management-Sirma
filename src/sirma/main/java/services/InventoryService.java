@@ -26,23 +26,32 @@ public class InventoryService {
         System.out.println("Please enter quantity.");
         int quantity = Integer.parseInt(sc.nextLine().trim());
         InventoryItem currentItem = allItems.get(id - 1);
+        validityCheck(currentItem, id, quantity);
+        yourItems.put(id, quantity);
+    }
+
+    private static void validityCheck(InventoryItem currentItem, int id, int quantity) {
         if (currentItem == null) {
             throw new IllegalArgumentException("Item with ID " + id + " does not exist.");
         }
-        if (currentItem.getQuantity()<quantity) {
+        if (currentItem.getQuantity()< quantity) {
             throw new IllegalArgumentException("Not enough quantity available for item with ID " + id);
         }
-        yourItems.put(id, quantity);
     }
 
     public void removeItem(Scanner sc) {
         System.out.println("Please enter id of item.");
         int id = Integer.parseInt(sc.nextLine().trim());
+        if (checkIfPresent(id)) return;
+        yourItems.remove(id);
+    }
+
+    private boolean checkIfPresent(int id) {
         if (yourItems.isEmpty() || !yourItems.containsKey(id)) {
             System.out.printf("There is no item with id %d.%n", id);
-            return;
+            return true;
         }
-        yourItems.remove(id);
+        return false;
     }
 
     public void displayItems() {
@@ -54,11 +63,20 @@ public class InventoryService {
 
     // shows your items separated by category, you get items from one category first then the others
     public void categorizeItems() {
-        if (yourItems.isEmpty()) {
-            System.out.println("You still have no items in your cart.");
-            return;
-        }
-        Map<Category, List<InventoryItem>> categorizedItems = yourItems.entrySet().stream()
+        if (checkIfEmpty()) return;
+        Map<Category, List<InventoryItem>> categorizedItems = getCategorizedMap();
+        printItemsByCategory(categorizedItems);
+    }
+
+    private static void printItemsByCategory(Map<Category, List<InventoryItem>> categorizedItems) {
+        categorizedItems.forEach((category, items) -> {
+            System.out.println("Category: " + category);
+            items.forEach(item -> System.out.println(item.getItemDetails()));
+        });
+    }
+
+    private Map<Category, List<InventoryItem>> getCategorizedMap() {
+        return yourItems.entrySet().stream()
             .map(entry -> {
                 int itemId = entry.getKey();
                 int quantity = entry.getValue();
@@ -67,11 +85,14 @@ public class InventoryService {
             })
             .collect(Collectors.groupingBy(Map.Entry::getKey,
                 Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
+    }
 
-        categorizedItems.forEach((category, items) -> {
-            System.out.println("Category: " + category);
-            items.forEach(item -> System.out.println(item.getItemDetails()));
-        });
+    private boolean checkIfEmpty() {
+        if (yourItems.isEmpty()) {
+            System.out.println("You still have no items in your cart.");
+            return true;
+        }
+        return false;
     }
 
     public void calculateTotalPrice() {
@@ -89,7 +110,7 @@ public class InventoryService {
 
     }
 
-
+    // get items from DB(json) using my custom ObjectMapper
     public List<InventoryItem> getAllItems (String filename) throws IOException {
         return MyObjectMapper.loadItemsFromJson(filename);
     }
