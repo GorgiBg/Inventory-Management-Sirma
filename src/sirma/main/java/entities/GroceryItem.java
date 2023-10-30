@@ -20,6 +20,4 @@ public class GroceryItem extends InventoryItem {
     public BigDecimal calculateItemValue() {
         return this.getItemPrice().multiply(BigDecimal.valueOf(this.weightInKilograms));
     }
-
-
 }
