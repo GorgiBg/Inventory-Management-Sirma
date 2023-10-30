@@ -14,6 +14,10 @@ public class InventoryItem extends AbstractItem {
         this.id = id;
     }
 
+    public InventoryItem() {
+
+    }
+
     public long getId() {
         return id;
     }
@@ -54,6 +58,19 @@ public class InventoryItem extends AbstractItem {
                 this.getQuantity()));
 
         System.out.println(sb);
+    }
+
+    @Override
+    public String getItemDetails() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("This item id is %d%n", this.getId()))
+            .append(String.format("This item is of category %s%n",
+                this.getCategory()))
+            .append(String.format("This item price is %s%n",
+                this.getItemPrice()))
+            .append(String.format("This item available quantity is: %d%n",
+                this.getQuantity()));
+        return sb.toString();
     }
 
 

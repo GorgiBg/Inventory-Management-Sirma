@@ -16,14 +16,10 @@ public class ApplicationRunner {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Please enter id of item.");
-                    int id = Integer.parseInt(sc.nextLine().trim());
-                    service.addItem(id);
+                    service.addItem(sc);
                     break;
                 case 2:
-                    System.out.println("Please enter id of item.");
-                    id = Integer.parseInt(sc.nextLine().trim());
-                    service.removeItem(id);
+                    service.removeItem(sc);
                     break;
                 case 3:
                     service.displayItems();

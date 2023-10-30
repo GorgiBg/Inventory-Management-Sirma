@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 
 public class ElectronicItem extends InventoryItem {
 
+
     private final Power power;
 
     public ElectronicItem(long id, Category category, BigDecimal price, boolean breakable
@@ -15,4 +16,6 @@ public class ElectronicItem extends InventoryItem {
         super(id, category, price, true, false, quantity);
         this.power = power;
     }
+
+
 }

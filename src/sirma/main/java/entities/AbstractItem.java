@@ -23,6 +23,9 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
         this.quantity = quantity;
     }
 
+    public AbstractItem() {
+    }
+
     public Category getCategory() {
         return this.category;
     }
