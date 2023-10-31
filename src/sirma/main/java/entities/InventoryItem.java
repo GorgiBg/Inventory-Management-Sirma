@@ -49,30 +49,18 @@ public class InventoryItem extends AbstractItem {
 
     @Override
     public void displayItemDescription() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("This item is %s%n", this.getName()))
-            .append(String.format("This item is of category %s%n",
-                this.getItemCategory()))
-            .append(String.format("This item price is %s%n",
-                this.getItemPrice()))
-            .append(String.format("This item available quantity is: %d",
-                this.getQuantity()));
-
-        System.out.println(sb);
+        System.out.printf("Item: %s%n", getName());
+        System.out.printf("Category: %s%n", getItemCategory());
+        System.out.printf("Price: $%.2f%n", getItemPrice());
+        System.out.printf("Available Quantity: %d%n", getQuantity());
     }
 
     @Override
     public String getItemDetails() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("This item is %s%n", this.getName()))
-            .append(String.format("This item id is %d%n", this.getId()))
-            .append(String.format("This item is of category %s%n",
-                this.getCategory()))
-            .append(String.format("This item price is %s%n",
-                this.getItemPrice()))
-            .append(String.format("This item available quantity is: %d%n",
-                this.getQuantity()));
-        return sb.toString();
+        return String.format(
+            "Item: %s%nID: %d%nCategory: %s%nPrice: $%.2f%nAvailable Quantity: %d%n",
+            getName(), getId(), getCategory(), getItemPrice(), getQuantity()
+        );
     }
 
     @Override

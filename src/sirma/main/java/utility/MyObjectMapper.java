@@ -3,6 +3,7 @@ package sirma.main.java.utility;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import sirma.main.java.constants.StringConstants;
 import sirma.main.java.entities.InventoryItem;
 
 import java.io.File;
@@ -21,14 +22,14 @@ public class MyObjectMapper extends com.fasterxml.jackson.databind.ObjectMapper 
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    // read list of items from json and add to list
+    // read list of items from json
     public static List<InventoryItem> loadItemsFromJson(String path) {
 
         try {
             return objectMapper.readValue(new File(path), new TypeReference<List<InventoryItem>>() {
             });
         } catch (IOException e) {
-            System.out.println("Inventory data loading failed. Please verify the JSON file and try again.");
+            System.out.println(StringConstants.ERROR_LOADING_JSON);
         }
         return null;
     }

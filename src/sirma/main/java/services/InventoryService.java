@@ -14,8 +14,9 @@ import java.util.stream.Collectors;
 
 public class InventoryService {
 
-    // Order holds map of items and Payment
+    // all items from DB with value quantity of item
     private Map<InventoryItem, Integer> databaseItems;
+    // Order holds map of items and Payment
     private Order order;
 
     public InventoryService() {
@@ -41,17 +42,17 @@ public class InventoryService {
         return paymentMethod;
     }
 
-    // get items from DB(json) using my custom ObjectMapper
+    // get items from DB(json) using my custom ObjectMapper and add to MAP<item, quantity>
     public Map<InventoryItem, Integer> getAllItems(String filename) {
         List<InventoryItem> items = null;
         items = MyObjectMapper.loadItemsFromJson(filename);
 
-        Map<InventoryItem, Integer> itemsMap = new HashMap<>();
+        Map<InventoryItem, Integer> dbItems = new HashMap<>();
         for (InventoryItem item : Objects.requireNonNull(items)) {
-            itemsMap.put(item, item.getQuantity());
+            dbItems.put(item, item.getQuantity());
         }
 
-        return itemsMap;
+        return dbItems;
     }
 
     public void addItem(Scanner sc) {
@@ -107,7 +108,7 @@ public class InventoryService {
     }
 
     public void displayItems() {
-        System.out.println("This is the list of all items.");
+        System.out.println(StringConstants.ALL_ITEMS_DISPLAY);
         for (InventoryItem item : databaseItems.keySet()) {
             System.out.println(item.getItemDetails());
         }
@@ -128,7 +129,7 @@ public class InventoryService {
 
     private boolean checkIfEmpty() {
         if (order.getItems().isEmpty()) {
-            System.out.println("Your cart is empty.");
+            System.out.println(StringConstants.EMPTY_CART);
             return true;
         }
         return false;
@@ -152,7 +153,7 @@ public class InventoryService {
         PaymentMethod paymentMethod = getPaymentMethod(selected);
 
         if (paymentMethod == null) {
-            System.out.println("Invalid payment method selected.");
+            System.out.println(StringConstants.INVALID_METHOD);
             return;
         }
 
@@ -181,7 +182,7 @@ public class InventoryService {
     }
 
     public void searchItemsByCategory(Scanner sc) {
-        System.out.println("Enter the category of the items, choices are  FRAGILE, GROCERY, ELECTRONIC:");
+        System.out.println(StringConstants.ENTER_CATEGORY);
         String category = sc.nextLine().trim();
         List<InventoryItem> selectedItems = databaseItems.keySet().stream()
             .filter(item -> Objects.equals(item.getCategory().getDisplayName(), category)).toList();
@@ -190,13 +191,13 @@ public class InventoryService {
         }
     }
 
-    public void sortItemsByPriceAscending(Scanner sc) {
+    public void sortItemsByPriceAscending() {
         databaseItems.keySet().stream()
             .sorted((Comparator.comparing(InventoryItem::getItemPrice)))
             .forEach(item -> System.out.println(item.getItemDetails()));
     }
 
-    public void sortItemsByPriceDescending(Scanner sc) {
+    public void sortItemsByPriceDescending() {
         databaseItems.keySet().stream()
             .sorted((Comparator.comparing(InventoryItem::getItemPrice).reversed()))
             .forEach(item -> System.out.println(item.getItemDetails()));
