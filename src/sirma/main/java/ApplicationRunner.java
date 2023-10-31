@@ -1,5 +1,6 @@
 package sirma.main.java;
 
+import sirma.main.java.constants.StringConstants;
 import sirma.main.java.services.InventoryService;
 
 import java.util.Scanner;
@@ -45,7 +46,7 @@ public class ApplicationRunner {
                     service.placeOrder(sc);
                     break;
                 case 11:
-                    System.out.println("Have a nice day.");
+                    System.out.println(StringConstants.NICE_DAY);
                     System.exit(0);
                 default:
                     System.out.println("Invalid choice. Please select a valid option.");
