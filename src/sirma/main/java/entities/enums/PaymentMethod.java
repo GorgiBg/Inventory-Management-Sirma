@@ -6,7 +6,7 @@ public enum PaymentMethod {
     DEBIT_CARD(3),
     PAYPAL(4);
 
-    int selectNumber;
+    final int selectNumber;
 
     PaymentMethod(int selectNumber) {
         this.selectNumber = selectNumber;

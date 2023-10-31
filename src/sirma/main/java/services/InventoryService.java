@@ -145,7 +145,7 @@ public class InventoryService {
         System.out.println("Total Price: " + totalPrice);
     }
 
-    public void placeOrder(Scanner sc) {
+    public void placeOrder(Scanner sc) throws IOException {
 
         System.out.println(StringConstants.ENTER_PAYMENT_METHOD);
         int selected = Integer.parseInt(sc.nextLine().trim());
@@ -159,15 +159,47 @@ public class InventoryService {
         Payment payment = new Payment(BigDecimal.ZERO, paymentMethod);
         BigDecimal orderTotal = processOrder(payment);
         System.out.printf("Order placed successfully! The sum is %s%n", orderTotal);
+        System.out.println("Have a nice day.");
+        System.exit(0);
     }
 
-    private BigDecimal processOrder(Payment payment) {
+    private BigDecimal processOrder(Payment payment) throws IOException {
         order.setPayment(payment);
         BigDecimal orderTotal = order.calculateOrderTotal();
         payment.setAmount(orderTotal);
         order.setPayment(payment);
         order.processPayment(payment);
         return orderTotal;
+    }
+
+    public void searchItemByName(Scanner sc) {
+        System.out.println("Enter the name of the product:");
+        String name = sc.nextLine().trim();
+        InventoryItem item = databaseItems.keySet().stream()
+            .filter(e -> e.getName().equalsIgnoreCase(name)).toList().get(0);
+        System.out.println(item.getItemDetails());
+    }
+
+    public void searchItemsByCategory(Scanner sc) {
+        System.out.println("Enter the category of the items, choices are  FRAGILE, GROCERY, ELECTRONIC:");
+        String category = sc.nextLine().trim();
+        List<InventoryItem> selectedItems = databaseItems.keySet().stream()
+            .filter(item -> Objects.equals(item.getCategory().getDisplayName(), category)).toList();
+        for (InventoryItem item : selectedItems) {
+            System.out.println(item.getItemDetails());
+        }
+    }
+
+    public void sortItemsByPriceAscending(Scanner sc) {
+        databaseItems.keySet().stream()
+            .sorted((Comparator.comparing(InventoryItem::getItemPrice)))
+            .forEach(item -> System.out.println(item.getItemDetails()));
+    }
+
+    public void sortItemsByPriceDescending(Scanner sc) {
+        databaseItems.keySet().stream()
+            .sorted((Comparator.comparing(InventoryItem::getItemPrice).reversed()))
+            .forEach(item -> System.out.println(item.getItemDetails()));
     }
 }
 

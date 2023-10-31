@@ -5,7 +5,7 @@ public enum Category {
     GROCERY("Grocery"),
     ELECTRONIC("Electronic");
 
-    private String displayName;
+    private final String displayName;
 
     Category(String displayName) {
         this.displayName = displayName;

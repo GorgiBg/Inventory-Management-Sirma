@@ -4,92 +4,89 @@
     "name": "Remote Car",
     "category": "ELECTRONIC",
     "price": 100.0,
+    "quantity": 2,
     "breakable": true,
-    "power": "BATTERIES",
-    "quantity": 2
+    "perishable": false
   },
   {
     "id": 2,
     "name": "Laptop",
     "category": "ELECTRONIC",
     "price": 200.0,
+    "quantity": 4,
     "breakable": true,
-    "power": "AC_POWER",
-    "quantity": 4
+    "perishable": false
   },
   {
     "id": 3,
     "name": "TV",
     "category": "ELECTRONIC",
     "price": 300.0,
+    "quantity": 6,
     "breakable": true,
-    "power": "USB",
-    "quantity": 6
+    "perishable": false
   },
   {
     "id": 4,
     "name": "Robot Toy",
     "category": "ELECTRONIC",
     "price": 400.0,
+    "quantity": 8,
     "breakable": true,
-    "power": "BATTERIES",
-    "quantity": 8
+    "perishable": false
   },
   {
     "id": 5,
     "name": "Cereal",
     "category": "GROCERY",
     "price": 35.0,
+    "quantity": 21,
     "breakable": false,
-    "expiryDate": "2023-10-27",
-    "weightInKilograms": 0.7,
-    "quantity": 21
+    "perishable": true
   },
   {
     "id": 6,
     "name": "Coffee",
     "category": "GROCERY",
     "price": 40.0,
+    "quantity": 24,
     "breakable": false,
-    "expiryDate": "2023-10-28",
-    "weightInKilograms": 0.8,
-    "quantity": 24
+    "perishable": true
   },
   {
     "id": 7,
     "name": "Jam",
     "category": "GROCERY",
     "price": 45.0,
+    "quantity": 27,
     "breakable": false,
-    "expiryDate": "2023-10-29",
-    "weightInKilograms": 0.9,
-    "quantity": 27
+    "perishable": true
   },
   {
     "id": 8,
-    "name": "Fragile Glassware",
+    "name": "Vintage Mirror",
     "category": "FRAGILE",
     "price": 100.0,
+    "quantity": 5,
     "breakable": true,
-    "weightInKilograms": 0.1,
-    "quantity": 5
+    "perishable": false
   },
   {
     "id": 9,
     "name": "Porcelain Figurine",
     "category": "FRAGILE",
     "price": 150.0,
+    "quantity": 7,
     "breakable": true,
-    "weightInKilograms": 0.2,
-    "quantity": 7
+    "perishable": false
   },
   {
     "id": 10,
     "name": "Antique Vase",
     "category": "FRAGILE",
     "price": 200.0,
+    "quantity": 8,
     "breakable": true,
-    "weightInKilograms": 0.3,
-    "quantity": 8
+    "perishable": false
   }
 ]

@@ -31,9 +31,21 @@ public class ApplicationRunner {
                     service.calculateTotalPrice();
                     break;
                 case 6:
-                    service.placeOrder(sc);
+                    service.searchItemByName(sc);
                     break;
                 case 7:
+                    service.searchItemsByCategory(sc);
+                    break;
+                case 8:
+                    service.sortItemsByPriceAscending(sc);
+                    break;
+                case 9:
+                    service.sortItemsByPriceDescending(sc);
+                    break;
+                case 10:
+                    service.placeOrder(sc);
+                    break;
+                case 11:
                     System.out.println("Have a nice day.");
                     System.exit(0);
                 default:
@@ -50,8 +62,12 @@ public class ApplicationRunner {
         System.out.println("3. Display a list of items");
         System.out.println("4. Print your items by Category");
         System.out.println("5. Calculate price of items in Order");
-        System.out.println("6. Place an order");
-        System.out.println("7. Exit");
-        System.out.println("Enter your choice (1-7): ");
+        System.out.println("6. Search item by name");
+        System.out.println("7. Search items by category");
+        System.out.println("8. Sort items by price ascending");
+        System.out.println("9. Sort items by price descending");
+        System.out.println("10. Place an order");
+        System.out.println("11. Exit");
+        System.out.println("Enter your choice (1-11): ");
     }
 }

@@ -11,34 +11,18 @@ import java.util.List;
 
 public class MyObjectMapper extends com.fasterxml.jackson.databind.ObjectMapper {
 
-    private static ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     static {
         configureMapper();
     }
+
     public static void configureMapper() {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-
-    // write single item
-    public static String writeItemToJson(InventoryItem item) throws IOException {
-        return objectMapper.writeValueAsString(item);
-    }
-
-
-    // read single item
-    public static InventoryItem readItemFromJson(String json) throws IOException {
-        return objectMapper.readValue(json, InventoryItem.class);
-    }
-
-    // save list of items
-    public static void saveItemsToJson(List<InventoryItem> inventory, String filename) throws IOException {
-        objectMapper.writeValue(new File(filename), inventory);
-    }
-
     // read list of items from json and add to list
-    public static List<InventoryItem> loadItemsFromJson(String filename) throws IOException {
-        return objectMapper.readValue(new File(filename), new TypeReference<List<InventoryItem>>() {});
+    public static List<InventoryItem> loadItemsFromJson(String path) throws IOException {
+        return objectMapper.readValue(new File(path), new TypeReference<List<InventoryItem>>() {});
     }
 }

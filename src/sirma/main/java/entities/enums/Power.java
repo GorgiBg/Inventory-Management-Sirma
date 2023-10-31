@@ -4,6 +4,6 @@ public enum Power {
     BATTERIES,
     AC_POWER,
     USB,
-    SOLAR;
+    SOLAR
 }
 

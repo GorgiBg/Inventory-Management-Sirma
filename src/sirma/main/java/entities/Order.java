@@ -1,12 +1,10 @@
 package sirma.main.java.entities;
 
-import sirma.main.java.constants.StringConstants;
 import sirma.main.java.entities.enums.PaymentMethod;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 public class Order {
     private Map<InventoryItem, Integer> items;
@@ -37,16 +35,6 @@ public class Order {
         return orderTotal;
     }
 
-
-    public InventoryItem getItemById(long id) {
-        for (Map.Entry<InventoryItem, Integer> entry : this.getDbItems().entrySet()) {
-            if (entry.getKey().getId() == id) {
-                return entry.getKey();
-            }
-        }
-    throw new NoSuchElementException(StringConstants.NO_SUCH_ELEMENT_EXCEPTION_MESSAGE);
-    }
-
     public void processPayment(Payment payment) {
         BigDecimal paymentAmount = payment.getAmount();
         PaymentMethod paymentMethod = payment.getPaymentMethod();
@@ -55,10 +43,6 @@ public class Order {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
-    }
-
-    public Map<InventoryItem, Integer> getDbItems() {
-        return dbItems;
     }
 
     public int getItemQuantity(InventoryItem item) {

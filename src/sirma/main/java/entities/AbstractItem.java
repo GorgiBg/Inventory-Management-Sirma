@@ -37,15 +37,13 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
     }
 
     public String getItemDetails() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("This item is %s%n", this.getName()))
-            .append(String.format("This item is of category %s%n",
-                this.getCategory()))
-            .append(String.format("This item price is %s%n",
-                this.getItemPrice()))
-            .append(String.format("This item available quantity is: %d",
-                this.getQuantity()));
-        return sb.toString();
+        return String.format("This item is %s%n", this.getName()) +
+            String.format("This item is of category %s%n",
+                this.getCategory()) +
+            String.format("This item price is %s%n",
+                this.getItemPrice()) +
+            String.format("This item available quantity is: %d",
+                this.getQuantity());
     }
 
     public String getName() {
@@ -57,17 +55,9 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
         return breakable;
     }
 
-    public void setBreakable(boolean breakable) {
-        this.breakable = breakable;
-    }
-
     @Override
     public boolean isPerishable() {
         return perishable;
-    }
-
-    public void setPerishable(boolean perishable) {
-        this.perishable = perishable;
     }
 
     @Override
