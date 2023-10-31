@@ -43,14 +43,15 @@ public class ApplicationRunner {
     }
 
     public static void displayMenu() {
-        System.out.println("Welcome to the Inventory Management System");
+        System.out.println();
+        System.out.println("*** Select from the choices below ***");
         System.out.println("1. Add new item");
         System.out.println("2. Remove item by ID");
         System.out.println("3. Display a list of items");
-        System.out.println("4. Categorize items");
-        System.out.println("5. Calculate price of items");
+        System.out.println("4. Print your items by Category");
+        System.out.println("5. Calculate price of items in Order");
         System.out.println("6. Place an order");
         System.out.println("7. Exit");
-        System.out.print("Enter your choice (1-7): ");
+        System.out.println("Enter your choice (1-7): ");
     }
 }
