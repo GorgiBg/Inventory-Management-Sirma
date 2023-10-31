@@ -25,7 +25,7 @@ public class ApplicationRunner {
                     service.displayItems();
                     break;
                 case 4:
-                    service.categorizeItems();
+                    service.printByCategory();
                     break;
                 case 5:
                     service.calculateTotalPrice();
@@ -59,10 +59,10 @@ public class ApplicationRunner {
         System.out.println("*** Select from the choices below ***");
         System.out.println("1. Add new item");
         System.out.println("2. Remove item by ID");
-        System.out.println("3. Display a list of items");
-        System.out.println("4. Print your items by Category");
+        System.out.println("3. Display all items");
+        System.out.println("4. Print items in your Order by Category");
         System.out.println("5. Calculate price of items in Order");
-        System.out.println("6. Search item by name");
+        System.out.println("6. Search an item by name");
         System.out.println("7. Search items by category");
         System.out.println("8. Sort items by price ascending");
         System.out.println("9. Sort items by price descending");

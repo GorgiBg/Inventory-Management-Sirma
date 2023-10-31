@@ -113,7 +113,7 @@ public class InventoryService {
         }
     }
 
-    public void categorizeItems() {
+    public void printByCategory() {
         if (checkIfEmpty()) return;
         Map<Category, List<InventoryItem>> categorizedItems = getCategorizedMap();
         printItemsByCategory(categorizedItems);
