@@ -10,6 +10,6 @@ public class StringConstants {
     public static String ALL_ITEMS_DISPLAY = "This is the list of all items." + System.lineSeparator();
     public static String EMPTY_CART = "Your shopping cart is empty.";
     public static String INVALID_METHOD = "Invalid payment method selected.";
-    public static String ENTER_CATEGORY = "Enter the category of the items, choices are  FRAGILE, GROCERY, ELECTRONIC:";
+    public static String ENTER_CATEGORY = "Enter the category of the items, choices are: FRAGILE, GROCERY, ELECTRONIC:";
 
 }
