@@ -31,6 +31,17 @@ public class InventoryService {
         });
     }
 
+    private static PaymentMethod getPaymentMethod(int selected) {
+        PaymentMethod paymentMethod = null;
+        for (PaymentMethod value : PaymentMethod.values()) {
+            if (value.getSelectNumber() == selected) {
+                paymentMethod = value;
+                break;
+            }
+        }
+        return paymentMethod;
+    }
+
     // get items from DB(json) using my custom ObjectMapper
     public Map<InventoryItem, Integer> getAllItems(String filename) throws IOException {
         List<InventoryItem> items = MyObjectMapper.loadItemsFromJson(filename);
@@ -49,19 +60,26 @@ public class InventoryService {
         System.out.println("Please enter quantity.");
         int quantity = Integer.parseInt(sc.nextLine().trim());
         InventoryItem currentItem = findItemById(id);
+        Integer orderedQuantity = checkIfQuantityIsValid(currentItem, quantity, id);
+        if (orderedQuantity == null) return;
+        // Add the item if not present in the order and update the selected quantity
+        order.getItems().put(currentItem, orderedQuantity + quantity);
+        System.out.printf("Item with id: %d and quantity: %d added to your Order%n" +
+            "now you have %d quantity in your Order%n", id, quantity, order.getItemQuantity(currentItem));
+        databaseItems.put(currentItem, databaseItems.get(currentItem) - quantity);
+    }
+
+    private Integer checkIfQuantityIsValid(InventoryItem currentItem, int quantity, int id) {
         if (currentItem.getQuantity() < quantity) {
             System.out.printf("Not enough quantity of item with id %d in the database.%n", id);
-            return;
+            return null;
         }
         int orderedQuantity = order.getItems().getOrDefault(currentItem, 0);
         if (currentItem.getQuantity() < orderedQuantity + quantity) {
             System.out.printf("Not enough quantity of item with id %d.%n", id);
-            return;
+            return null;
         }
-        // Add the item if not present in the order and update the selected quantity
-        order.getItems().put(currentItem, orderedQuantity + quantity);
-        System.out.printf("Item with id: %d and quantity: %d added to your Order%n", id, quantity);
-        databaseItems.put(currentItem, databaseItems.get(currentItem) - quantity);
+        return orderedQuantity;
     }
 
     private InventoryItem findItemById(int id) {
@@ -150,17 +168,6 @@ public class InventoryService {
         order.setPayment(payment);
         order.processPayment(payment);
         return orderTotal;
-    }
-
-    private static PaymentMethod getPaymentMethod(int selected) {
-        PaymentMethod paymentMethod = null;
-        for (PaymentMethod value : PaymentMethod.values()) {
-            if (value.getSelectNumber() == selected) {
-                paymentMethod = value;
-                break;
-            }
-        }
-        return paymentMethod;
     }
 }
 

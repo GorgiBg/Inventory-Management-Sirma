@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class Payment {
     private BigDecimal amount;
-    private PaymentMethod paymentMethod;
+    private final PaymentMethod paymentMethod;
 
     public Payment(BigDecimal amount, PaymentMethod paymentMethod) {
         this.amount = amount;

@@ -22,6 +22,8 @@ public class Order {
         return items;
     }
 
+
+
     public BigDecimal calculateOrderTotal() {
 
         BigDecimal orderTotal = BigDecimal.ZERO;
@@ -51,19 +53,15 @@ public class Order {
         System.out.printf("You just payed %.2f via %s%n", paymentAmount, paymentMethod);
     }
 
-    public PaymentMethod getPaymentMethod() {
-        return this.payment.getPaymentMethod();
-    }
-
-    public Payment getPayment() {
-        return payment;
-    }
-
     public void setPayment(Payment payment) {
         this.payment = payment;
     }
 
     public Map<InventoryItem, Integer> getDbItems() {
         return dbItems;
+    }
+
+    public int getItemQuantity(InventoryItem item) {
+        return items.getOrDefault(item, 0);
     }
 }

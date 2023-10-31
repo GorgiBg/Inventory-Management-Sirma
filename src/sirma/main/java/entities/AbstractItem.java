@@ -30,16 +30,8 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
         return this.category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public BigDecimal getPrice() {
         return this.price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
     }
 
     public String getItemDetails() {
