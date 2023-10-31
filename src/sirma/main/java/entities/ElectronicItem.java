@@ -11,8 +11,8 @@ public class ElectronicItem extends InventoryItem {
 
     private final Power power;
 
-    public ElectronicItem(long id, Category category, BigDecimal price, Power power, int quantity) {
-        super(id, category, price, true, false, quantity);
+    public ElectronicItem(long id, String name, Category category, BigDecimal price, Power power, int quantity) {
+        super(id, name, category, price, true, false, quantity);
         this.power = power;
     }
 

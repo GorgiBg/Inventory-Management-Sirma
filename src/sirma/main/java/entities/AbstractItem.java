@@ -7,6 +7,7 @@ import sirma.main.java.entities.interfaces.*;
 import java.math.BigDecimal;
 
 public abstract class AbstractItem implements Item, Categorizable, Breakable, Perishable, Sellable {
+    protected String name;
 
     protected Category category;
     protected BigDecimal price;
@@ -14,8 +15,9 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
     protected boolean breakable;
     protected boolean perishable;
 
-    public AbstractItem(Category category, BigDecimal price, boolean breakable, boolean perishable,
+    public AbstractItem(String name, Category category, BigDecimal price, boolean breakable, boolean perishable,
                         int quantity) {
+        this.name =name;
         this.category = category;
         this.price = price;
         this.breakable = breakable;
@@ -36,13 +38,18 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
 
     public String getItemDetails() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("This item is of category %s%n",
+        sb.append(String.format("This item is %s%n", this.getName()))
+            .append(String.format("This item is of category %s%n",
                 this.getCategory()))
             .append(String.format("This item price is %s%n",
                 this.getItemPrice()))
             .append(String.format("This item available quantity is: %d",
                 this.getQuantity()));
         return sb.toString();
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

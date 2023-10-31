@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "name": "Remote Car",
     "category": "ELECTRONIC",
     "price": 100.0,
     "breakable": true,
@@ -9,6 +10,7 @@
   },
   {
     "id": 2,
+    "name": "Laptop",
     "category": "ELECTRONIC",
     "price": 200.0,
     "breakable": true,
@@ -17,6 +19,7 @@
   },
   {
     "id": 3,
+    "name": "TV",
     "category": "ELECTRONIC",
     "price": 300.0,
     "breakable": true,
@@ -25,6 +28,7 @@
   },
   {
     "id": 4,
+    "name": "Robot Toy",
     "category": "ELECTRONIC",
     "price": 400.0,
     "breakable": true,
@@ -33,6 +37,7 @@
   },
   {
     "id": 5,
+    "name": "Cereal",
     "category": "GROCERY",
     "price": 35.0,
     "breakable": false,
@@ -42,6 +47,7 @@
   },
   {
     "id": 6,
+    "name": "Coffee",
     "category": "GROCERY",
     "price": 40.0,
     "breakable": false,
@@ -51,6 +57,7 @@
   },
   {
     "id": 7,
+    "name": "Jam",
     "category": "GROCERY",
     "price": 45.0,
     "breakable": false,
@@ -60,6 +67,7 @@
   },
   {
     "id": 8,
+    "name": "Fragile Glassware",
     "category": "FRAGILE",
     "price": 100.0,
     "breakable": true,
@@ -68,6 +76,7 @@
   },
   {
     "id": 9,
+    "name": "Porcelain Figurine",
     "category": "FRAGILE",
     "price": 150.0,
     "breakable": true,
@@ -76,6 +85,7 @@
   },
   {
     "id": 10,
+    "name": "Antique Vase",
     "category": "FRAGILE",
     "price": 200.0,
     "breakable": true,

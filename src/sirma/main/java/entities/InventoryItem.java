@@ -8,9 +8,9 @@ public class InventoryItem extends AbstractItem {
 
     private long id;
 
-    public InventoryItem(long id, Category category, BigDecimal price, boolean breakable, boolean perishable
+    public InventoryItem(long id, String name, Category category, BigDecimal price, boolean breakable, boolean perishable
     , int quantity) {
-        super(category, price, breakable, perishable, quantity);
+        super(name, category, price, breakable, perishable, quantity);
         this.id = id;
     }
 
@@ -50,7 +50,8 @@ public class InventoryItem extends AbstractItem {
     @Override
     public void displayItemDescription() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("This item is of category %s%n",
+        sb.append(String.format("This item is %s%n", this.getName()))
+            .append(String.format("This item is of category %s%n",
             this.getItemCategory()))
             .append(String.format("This item price is %s%n",
                 this.getItemPrice()))
@@ -63,7 +64,8 @@ public class InventoryItem extends AbstractItem {
     @Override
     public String getItemDetails() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("This item id is %d%n", this.getId()))
+        sb.append(String.format("This item is %s%n", this.getName()))
+            .append(String.format("This item id is %d%n", this.getId()))
             .append(String.format("This item is of category %s%n",
                 this.getCategory()))
             .append(String.format("This item price is %s%n",

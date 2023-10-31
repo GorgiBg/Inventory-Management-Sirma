@@ -8,9 +8,9 @@ public class FragileItem extends InventoryItem {
 
     private double weightInKilograms;
 
-    public FragileItem(long id, Category category, BigDecimal price, double weightInKilograms,
+    public FragileItem(long id, String name,Category category, BigDecimal price, double weightInKilograms,
                        int quantity) {
-        super(id, category, price, true, false, quantity);
+        super(id, name, category, price, true, false, quantity);
         this.weightInKilograms = weightInKilograms;
     }
 }

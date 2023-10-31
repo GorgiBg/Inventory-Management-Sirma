@@ -128,7 +128,7 @@ public class InventoryService {
 
     private boolean checkIfEmpty() {
         if (order.getItems().isEmpty()) {
-            System.out.println("You still have no items in your cart.");
+            System.out.println("Your cart is empty.");
             return true;
         }
         return false;
@@ -147,7 +147,7 @@ public class InventoryService {
 
     public void placeOrder(Scanner sc) {
 
-        System.out.println("Enter your payment method((1)CASH, (2)CREDIT_CARD, (3)DEBIT_CARD, (4)PAYPAL)");
+        System.out.println(StringConstants.ENTER_PAYMENT_METHOD);
         int selected = Integer.parseInt(sc.nextLine().trim());
         PaymentMethod paymentMethod = getPaymentMethod(selected);
 
