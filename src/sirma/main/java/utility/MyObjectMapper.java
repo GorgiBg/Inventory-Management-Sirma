@@ -23,6 +23,7 @@ public class MyObjectMapper extends com.fasterxml.jackson.databind.ObjectMapper 
 
     // read list of items from json and add to list
     public static List<InventoryItem> loadItemsFromJson(String path) throws IOException {
-        return objectMapper.readValue(new File(path), new TypeReference<List<InventoryItem>>() {});
+        return objectMapper.readValue(new File(path), new TypeReference<List<InventoryItem>>() {
+        });
     }
 }

@@ -9,7 +9,7 @@ public class InventoryItem extends AbstractItem {
     private long id;
 
     public InventoryItem(long id, String name, Category category, BigDecimal price, boolean breakable, boolean perishable
-    , int quantity) {
+        , int quantity) {
         super(name, category, price, breakable, perishable, quantity);
         this.id = id;
     }
@@ -52,7 +52,7 @@ public class InventoryItem extends AbstractItem {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("This item is %s%n", this.getName()))
             .append(String.format("This item is of category %s%n",
-            this.getItemCategory()))
+                this.getItemCategory()))
             .append(String.format("This item price is %s%n",
                 this.getItemPrice()))
             .append(String.format("This item available quantity is: %d",
@@ -75,16 +75,14 @@ public class InventoryItem extends AbstractItem {
         return sb.toString();
     }
 
-
+    @Override
+    public BigDecimal getItemPrice() {
+        return super.getPrice();
+    }
 
     @Override
     public void setItemPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    @Override
-    public BigDecimal getItemPrice() {
-        return super.getPrice();
     }
 
     @Override

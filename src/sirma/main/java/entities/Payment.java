@@ -5,8 +5,8 @@ import sirma.main.java.entities.enums.PaymentMethod;
 import java.math.BigDecimal;
 
 public class Payment {
-    private BigDecimal amount;
     private final PaymentMethod paymentMethod;
+    private BigDecimal amount;
 
     public Payment(BigDecimal amount, PaymentMethod paymentMethod) {
         this.amount = amount;
@@ -17,12 +17,12 @@ public class Payment {
         return amount;
     }
 
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
-    }
-
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
     }
 }
 

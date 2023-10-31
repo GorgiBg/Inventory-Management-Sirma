@@ -6,5 +6,6 @@ import sirma.main.java.entities.enums.Category;
 public interface Categorizable {
 
     String getItemCategory();
+
     void setItemCategory(Category category);
 }

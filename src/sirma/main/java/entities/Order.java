@@ -21,7 +21,6 @@ public class Order {
     }
 
 
-
     public BigDecimal calculateOrderTotal() {
 
         BigDecimal orderTotal = BigDecimal.ZERO;
