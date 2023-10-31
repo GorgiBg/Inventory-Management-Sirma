@@ -8,7 +8,6 @@ import sirma.main.java.entities.enums.Category;
 import sirma.main.java.entities.enums.PaymentMethod;
 import sirma.main.java.utility.MyObjectMapper;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,7 +18,7 @@ public class InventoryService {
     private Map<InventoryItem, Integer> databaseItems;
     private Order order;
 
-    public InventoryService() throws IOException {
+    public InventoryService() {
         this.databaseItems = getAllItems(StringConstants.DATABASE_FILE_NAME);
         this.order = new Order(databaseItems);
     }
@@ -43,11 +42,12 @@ public class InventoryService {
     }
 
     // get items from DB(json) using my custom ObjectMapper
-    public Map<InventoryItem, Integer> getAllItems(String filename) throws IOException {
-        List<InventoryItem> items = MyObjectMapper.loadItemsFromJson(filename);
+    public Map<InventoryItem, Integer> getAllItems(String filename) {
+        List<InventoryItem> items = null;
+        items = MyObjectMapper.loadItemsFromJson(filename);
 
         Map<InventoryItem, Integer> itemsMap = new HashMap<>();
-        for (InventoryItem item : items) {
+        for (InventoryItem item : Objects.requireNonNull(items)) {
             itemsMap.put(item, item.getQuantity());
         }
 
@@ -145,7 +145,7 @@ public class InventoryService {
         System.out.println("Total Price: " + totalPrice);
     }
 
-    public void placeOrder(Scanner sc) throws IOException {
+    public void placeOrder(Scanner sc) {
 
         System.out.println(StringConstants.ENTER_PAYMENT_METHOD);
         int selected = Integer.parseInt(sc.nextLine().trim());
@@ -163,7 +163,7 @@ public class InventoryService {
         System.exit(0);
     }
 
-    private BigDecimal processOrder(Payment payment) throws IOException {
+    private BigDecimal processOrder(Payment payment) {
         order.setPayment(payment);
         BigDecimal orderTotal = order.calculateOrderTotal();
         payment.setAmount(orderTotal);

@@ -2,11 +2,10 @@ package sirma.main.java;
 
 import sirma.main.java.services.InventoryService;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class ApplicationRunner {
-    public static void run() throws IOException {
+    public static void run()  {
         Scanner sc = new Scanner(System.in);
         InventoryService service = new InventoryService();
 

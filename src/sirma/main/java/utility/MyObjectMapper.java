@@ -22,8 +22,14 @@ public class MyObjectMapper extends com.fasterxml.jackson.databind.ObjectMapper 
     }
 
     // read list of items from json and add to list
-    public static List<InventoryItem> loadItemsFromJson(String path) throws IOException {
-        return objectMapper.readValue(new File(path), new TypeReference<List<InventoryItem>>() {
-        });
+    public static List<InventoryItem> loadItemsFromJson(String path) {
+
+        try {
+            return objectMapper.readValue(new File(path), new TypeReference<List<InventoryItem>>() {
+            });
+        } catch (IOException e) {
+            System.out.println("Inventory data loading failed. Please verify the JSON file and try again.");
+        }
+        return null;
     }
 }
