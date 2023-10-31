@@ -159,7 +159,7 @@ public class InventoryService {
 
         Payment payment = new Payment(BigDecimal.ZERO, paymentMethod);
         BigDecimal orderTotal = processOrder(payment);
-        System.out.printf("Order placed successfully! The sum is %s%n", orderTotal);
+        System.out.printf("Congratulations, your order is complete! The sum is %s%n", orderTotal);
         System.out.println(StringConstants.NICE_DAY);
         System.exit(0);
     }
